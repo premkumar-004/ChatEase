@@ -5,7 +5,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     return (
         <div className='bg-blue-50 h-screen flex items-center '>
-            <form className='w-64 mx-auto '>
+            <form className='w-64 mx-auto mb-12'>
                 <input type="text" placeholder='username' className='block w-full rounded-sm p-2 mb-2 border ' value={username} onChange={(event) => {
                     setUsername(event.target.value)
                 }} />
