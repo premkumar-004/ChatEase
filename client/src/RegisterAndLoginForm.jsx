@@ -15,7 +15,10 @@ const RegisterAndLoginForm = () => {
         setId(data.id);
     }
     return (
-        <div className='bg-blue-50 h-screen flex items-center justify-center'>
+        <div className='bg-blue-50 h-screen flex items-center justify-center flex-col'>
+            <h1 className='text-6xl mb-14 font-bold text-blue-600 hover:text-blue-800 transition-colors duration-300 tracking-tight'>
+                Welcome&#128075; to ChatEase
+            </h1>
             <div className='p-6 bg-blue-100 flex item-center rounded-lg justify-between flex-col shadow-black shadow-sm'>
                 <form className='w-64 mx-auto mb-3 flex flex-col justify-evenly item-center gap-6' onSubmit={handleSubmit}>
                     <input type="text" placeholder='username' className='block w-full rounded-lg p-2 mb-2 border ' value={username} onChange={(event) => {
