@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const ws = require("ws");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const User = require("./models/User");
@@ -77,6 +78,13 @@ app.post("/register", async (req, res) => {
 
 
 
-app.listen(4000, (req, res) => {
+const server = app.listen(4000, (req, res) => {
     console.log('Server is running on port 4000');
 });
+
+//WebSocket Sever
+const wss = new ws.WebSocketServer({ server });
+wss.on('connection', (connection) => {
+    console.log("WebSocketSever Connected");
+
+})
