@@ -7,7 +7,7 @@ const Chat = () => {
     const [ws, setWs] = useState(null);
     const [onlinePeople, setOnlinePeople] = useState({});
     const [selectedUserId, setSelectedUserId] = useState(null);
-    const { username } = useContext(UserContext);
+    const { username, id } = useContext(UserContext);
 
     useEffect(() => {
         const ws = new WebSocket('ws://localhost:4000');
@@ -31,13 +31,14 @@ const Chat = () => {
         }
     }
 
-    // const onlinePeopleExcOurUser = onlinePeople.filter(({ username }) => username);
+    const onlinePeopleExcOurUser = { ...onlinePeople };
+    delete onlinePeopleExcOurUser[id];
 
     return (
         <div className="flex h-screen">
             <div className="bg-white w-1/3 ">
                 <Logo />
-                {Object.keys(onlinePeople).map(userId => (
+                {Object.keys(onlinePeopleExcOurUser).map(userId => (
                     <div key={userId} className={"border-b border-gray-200 py-3 pl-4 hover:bg-gray-50 transition-colors duration-200 cursor-pointer flex items-center gap-2 " + (userId === selectedUserId ? 'bg-blue-50' : '')} onClick={() => setSelectedUserId(userId)}>
                         <Avatar username={onlinePeople[userId]} userId={userId} />
                         <span className='text-gray-800'> {onlinePeople[userId]} </span>
