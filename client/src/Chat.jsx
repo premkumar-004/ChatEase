@@ -31,11 +31,12 @@ const Chat = () => {
         }
     }
 
+    // const onlinePeopleExcOurUser = onlinePeople.filter(({ username }) => username);
+
     return (
         <div className="flex h-screen">
             <div className="bg-white w-1/3 ">
                 <Logo />
-                {username}
                 {Object.keys(onlinePeople).map(userId => (
                     <div key={userId} className={"border-b border-gray-200 py-3 pl-4 hover:bg-gray-50 transition-colors duration-200 cursor-pointer flex items-center gap-2 " + (userId === selectedUserId ? 'bg-blue-50' : '')} onClick={() => setSelectedUserId(userId)}>
                         <Avatar username={onlinePeople[userId]} userId={userId} />
